@@ -11,7 +11,7 @@ if [ "$?" -eq 0 ]; then
 
     # Parse FLUKA version tag
     fluka_current=$(grep "version" Version.tag | awk -F":" '{print $2}' | awk '{print $1}')
-    echo "### - Current FLUKA version: " $fluka_current
+    echo "### - Current FLUKA version:" $fluka_current
 
     # Cleanup
     rm -rf Version.tag
@@ -31,7 +31,7 @@ if [ -e ~/.fluka/fluka.version ]; then
 
     # Read installed FLUKA version
     fluka_installed=$(cat ~/.fluka/fluka.version)
-    echo "### - Installed FLUKA version: " $fluka_installed
+    echo "### - Installed FLUKA version:" $fluka_installed
 
     # Check if current version is available
     echo "### - Comparing current and installed FLUKA versions"
@@ -109,7 +109,7 @@ if [ ! -e ~/.fluka/fluka.version ]; then
         # Parse version tag
         fluka_short=$(grep "version" Version.tag | awk -F":" '{print $2}' | awk '{print $1}')
 
-        echo "### - FLUKA package version number: " $fluka_short
+        echo "### - FLUKA package version number:" $fluka_short
 
         # Delete version tag
         rm Version.tag
@@ -188,7 +188,7 @@ if [ ! -e ~/.fluka/fluka.version ]; then
         # Parse actual version tag
         fluka_actual=$(grep "version" /usr/local/fluka/Version.tag | awk -F":" '{print $2}' | awk '{print $1}')
 
-        echo "### - Actual FLUKA package version number: " $fluka_actual
+        echo "### - Actual FLUKA package version number:" $fluka_actual
 
         touch ~/.fluka/fluka.version
         echo ${fluka_actual} > ~/.fluka/fluka.version
