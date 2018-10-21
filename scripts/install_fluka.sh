@@ -184,8 +184,14 @@ if [ ! -e ~/.fluka/fluka.version ]; then
     if [ -e /usr/local/fluka/flukahp ]; then
         # Save installed FLUKA version
         echo "### - FLUKA compilation successful"
+
+        # Parse actual version tag
+        fluka_actual=$(grep "version" /usr/local/fluka/Version.tag | awk -F":" '{print $2}' | awk '{print $1}')
+
+        echo "### - Actual FLUKA package version number: " $fluka_actual
+
         touch ~/.fluka/fluka.version
-        echo ${fluka_current} > ~/.fluka/fluka.version
+        echo ${fluka_actual} > ~/.fluka/fluka.version
     else
         # Exit with error
         echo "### - FLUKA compilation failed"
