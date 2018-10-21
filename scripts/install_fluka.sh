@@ -1,45 +1,56 @@
 #!/bin/bash
 
-source ~/.bashrc
-
 # Get current FLUKA version from FLUKA website
+echo "### - Getting current FLUKA version"
 wget_return=$(wget -q http://www.fluka.org/Version.tag)
 
 # Check return status of last command
 if [ "$?" -eq 0 ]; then
     # Succesful
+    echo "### - Got current version"
 
     # Parse FLUKA version tag
     fluka_current=$(grep "version" Version.tag | awk -F":" '{print $2}' | awk '{print $1}')
+    echo "### - Current FLUKA version: " $fluka_current
 
     # Cleanup
     rm -rf Version.tag
 else
     # Failed
+    echo "### - Failed to get current version"
 
     # Indicate missing current version
     fluka_current=0
 fi
 
 # Check if FLUKA is installed
+echo "### - Looking for previous FLUKA installation"
 if [ -e ~/.fluka/fluka.version ]; then
     # FLUKA is installed
+    echo "### - Found previous FLUKA installation"
 
     # Read installed FLUKA version
     fluka_installed=$(cat ~/.fluka/fluka.version)
+    echo "### - Installed FLUKA version: " $fluka_installed
 
     # Check if current version is available
+    echo "### - Comparing current and installed versions"
     if [ "${fluka_current}" == 0 ]; then
         # Current version is unavailable - assume installed version is current
+        echo "### - Current version not available"
         fluka_current=$fluka_installed
     fi
 
     # Compare installed and current versions
     if [ ! "${fluka_installed}" == "${fluka_current}" ]; then
         # Different versions
+        echo "### - Installed version is different from current"
 
         # Remove installed version
+        echo "### - Removing installed version"
         rm -rf ~/.fluka/fluka.version
+    else
+        echo "### - Installed version is up to date"
     fi
 else
     # Indicate that FLUKA wasn't installed
@@ -48,30 +59,35 @@ fi
 
 # Check if FLUKA is installed
 if [ ! -e ~/.fluka/fluka.version ]; then
+    echo "### - FLUKA is not installed"
     # FLUKA is not installed
 
     # Check if current version is available
     if [ "${fluka_current}" == 0 ]; then
+        echo "### - Current version not available"
         # Current version is unavailable
 
         # Check if a FLUKA package is in the folder
+        echo "### - Looking for FLUKA package"
         package_count=$(ls -1 fluka*.tar.gz | wc -l)
-
-        echo $package_count
 
         if [ ${package_count} -gt 0 ]; then
             # One or more fluka package is available
+            echo "### - Found one or more FLUKA package, using newest"
             fluka_package=$(ls -1 -t fluka*.tar.gz | head -n 1)
-
-            echo $fluka_package
         else
             # No package available
+            echo "### - No FLUKA package was found"
 
             # Exit with error
+            echo "### - ERROR:"
+            echo "### - Cannot determine current version of FLUKA, try again later"
+
             exit 1
         fi
     else
         # Current version is available
+        echo "### - Current version is available"
 
         # Create short FLUKA version number (without respin)
         fluka_current_short=$(echo  $fluka_current | awk -F"." '{print $1 "." $2}')
@@ -81,12 +97,40 @@ if [ ! -e ~/.fluka/fluka.version ]; then
         fluka_package=fluka$fluka_current-linux-gfor64bitAA.tar.gz
     fi
 
+    # Check if FLUKA package with short is already downloaded
+    if [ -e ${fluka_package_short} ]; then
+        echo "### - FLUKA package with short version number found"
+        # FLUKA package with short name is available
+
+        # Extract Version.tag
+        echo "### - Checking version number of the package"
+        sudo tar -zxf ${fluka_package_short} Version.tag
+
+        # Parse version tag
+        fluka_short=$(grep "version" Version.tag | awk -F":" '{print $2}' | awk '{print $1}')
+
+        echo "### - Package version number: " $fluka_short
+
+        # Delete version tag
+        rm Version.tag
+
+        # Compare short and current versions
+        if [ "${fluka_short}" == "${fluka_current}" ]; then
+            echo "### - Package version is up to date"
+            # Same versions
+
+            # Rename FLUKA package
+            mv ${fluka_package_short} ${fluka_package}
+        fi
+    fi
+
     # Check if current FLUKA package is already downloaded
     if [ ! -e ${fluka_package} ]; then
-        # Current package wan not downloaded yet
+        # Current package was not downloaded yet
+        echo "### - Downloading FLUKA package"
 
         # Get FUID from user
-        echo -n "fuid: "
+        echo -n "### - Your FLUKA ID (fuid-xxxx): "
         read fuid
 
         # Download FLUKA package
@@ -95,32 +139,40 @@ if [ ! -e ~/.fluka/fluka.version ]; then
         # Check return status of last command
         if [ $? -eq 0 ]; then
             # Succesful
+            echo "### - FLUKA package successfully downloaded"
 
             # Rename FLUKA package
             mv ${fluka_package_short} ${fluka_package}
         else
             # Failed
+            echo "### - Download failed"
 
             # Restore installed FLUKA version
             if [ ! "${fluka_installed}" == 0 ]; then
+                echo "### - Keeping previous FLUKA installation"
                 echo ${fluka_installed} > ~/.fluka/fluka.version
 
-                # Exit with error
-                exit 1
+                # Exit without error
+                exit 0
             fi
 
             # Exit with error
+            echo "### - No FLUKA package available, try again later"
             exit 1
         fi
+    else
+        echo "### - Current FLUKA package found, skipping download"
     fi
 
     # Extract FLUKA
+    echo "### - Extracting FLUKA package"
     sudo rm -rf /usr/local/fluka/*
     sudo tar -zxf ${fluka_package} -C /usr/local/fluka
 
     cd /usr/local/fluka
 
     # Compile FLUKA
+    echo "### - Compiling FLUKA"
     sudo -E make
 
     # Fix file permissions
@@ -128,7 +180,15 @@ if [ ! -e ~/.fluka/fluka.version ]; then
 
     cd -
 
-    # Save installed FLUKA version
-    touch ~/.fluka/fluka.version
-    echo ${fluka_current} > ~/.fluka/fluka.version
+    # Check if compilation was successful
+    if [ -e /usr/local/fluka/flukahp ]; then
+        # Save installed FLUKA version
+        echo "### - Compilation successful"
+        touch ~/.fluka/fluka.version
+        echo ${fluka_current} > ~/.fluka/fluka.version
+    else
+        # Exit with error
+        echo "### - Compilation failed"
+        exit 1
+    fi
 fi
