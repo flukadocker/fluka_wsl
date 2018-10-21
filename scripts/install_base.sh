@@ -21,7 +21,9 @@ if [ ! -e ~/.fluka/install.lock ]; then
 
     # Install necessary packages for FLUKA
     echo "### - Installing necessary packages"
-    sudo apt-get install -y make gfortran-8
+    sudo apt-get install -y make gfortran-8 python tk gnuplot-x11 python-tk \
+                            python-numpy desktop-file-utils python-imaging-tk \
+                            python-pil
 
     # Set up symbolic links
     echo "### - Setting up symbolic links"
