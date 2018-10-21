@@ -54,6 +54,10 @@ fi
 echo "### - Reloading enviromental variables"
 source ~/.bashrc
 
+# Install Flair
+echo "### - Running Flair installation"
+./scripts/install_flair.sh
+
 # Install FLUKA
 echo "### - Running FLUKA installation"
 ./scripts/install_fluka.sh

@@ -34,7 +34,6 @@ if [ -e ~/.fluka/fluka.version ]; then
     echo "### - Installed FLUKA version:" $fluka_installed
 
     # Check if current version is available
-    echo "### - Comparing current and installed FLUKA versions"
     if [ "${fluka_current}" == 0 ]; then
         # Current version is unavailable - assume installed version is current
         echo "### - Current FLUKA version not available"
@@ -42,6 +41,7 @@ if [ -e ~/.fluka/fluka.version ]; then
     fi
 
     # Compare installed and current versions
+    echo "### - Comparing current and installed FLUKA versions"
     if [ ! "${fluka_installed}" == "${fluka_current}" ]; then
         # Different versions
         echo "### - Installed FLUKA version is different from current"
@@ -150,6 +150,7 @@ if [ ! -e ~/.fluka/fluka.version ]; then
             # Restore installed FLUKA version
             if [ ! "${fluka_installed}" == 0 ]; then
                 echo "### - Keeping previous FLUKA installation"
+                touch ~/.fluka/fluka.version
                 echo ${fluka_installed} > ~/.fluka/fluka.version
 
                 # Exit without error
