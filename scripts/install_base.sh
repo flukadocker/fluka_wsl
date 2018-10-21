@@ -34,6 +34,7 @@ if [ ! -e ~/.fluka/install.lock ]; then
     # Create FLUKA directory
     echo "### - Creating FLUKA directory"
     sudo mkdir -p /usr/local/fluka
+    mkdir -p ~/.local/share
 
     # Set up enviroment variables
     echo "### - Setting up enviromental variables"
