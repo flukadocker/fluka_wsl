@@ -13,7 +13,7 @@ Start a *PowerShell* as *Administrator* and run the following command:
 
     Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
 
-When the command asks, reboot the PC, to finalaze the installation.
+When the command asks, reboot the PC to finalaze the installation.
 
 ### 2. Install Ubuntu Linux from the Microsoft Store
 In the *Microsoft Store*, search for *Ubuntu* and click on the *Get* button. The installation will start automatically.
