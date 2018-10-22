@@ -67,7 +67,7 @@ The installation script will automatically do the following steps:
 To finalize the installation close *Ubuntu*.
 
 ### 7. Install Xming
-Install the *Public Domain Version* of *Xming* from>
+Install the *Public Domain Version* of *Xming* from:
 
     http://www.straightrunning.com/XmingNotes/
 
