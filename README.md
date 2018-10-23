@@ -23,7 +23,7 @@ To initialize simply click *Lauch* in the *Microsoft Store*, or find *Ubuntu* in
 
 After a couple minutes it will ask for a new Linux username and password. They can be anything, as they are not related to your Windows credentials.
 
-#### 3.1 Legacy console error
+#### 3.1. Legacy console error
 Sometimes you can't enter the new Linux username and password, and the following error message is appearing:
 
     Unsupported console settings. In order to use this feature the legacy console must be disabled.
