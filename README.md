@@ -1,7 +1,7 @@
 # FLUKA on Windows 10 using WSL
 These scripts will set up and install FLUKA on Windows 10 using the Windows Subsystem for Linux (WSL).
 
-The Windows Subsystem for Linux lets developers run GNU/Linux environment -- including most command-line tools, utilities, and applications -- directly on Windows, unmodified, without the overhead of a virtual machine.
+The Windows Subsystem for Linux lets developers run GNU/Linux environment - including most command-line tools, utilities, and applications - directly on Windows, unmodified, without the overhead of a virtual machine.
 
 ## Requirements
 It only requires Windows 10 (any version) and admin rights during installation.
