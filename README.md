@@ -4,7 +4,7 @@ These scripts will set up and install FLUKA on Windows 10 using the Windows Subs
 The Windows Subsystem for Linux lets developers run GNU/Linux environment - including most command-line tools, utilities, and applications - directly on Windows, unmodified, without the overhead of a virtual machine.
 
 ## Requirements
-It only requires Windows 10 (any version) and admin rights during installation.
+It requires Windows 10 (build: 16299 [2017 Fall update] or greater) and admin rights during installation.
 
 ## Installation
 
@@ -57,10 +57,10 @@ The installation script will automatically do the following steps:
 2. Update Ubuntu packages
 3. Install packages required by FLUKA and Flair
 4. Set up Ubuntu to be able to run FLUKA and Flair
-4. Checks the latest version of FLUKA and Flair
+4. Check the latest version of FLUKA and Flair
 5. Download FLUKA and Flair, if necessary
 6. Install Flair
-7. Compiles FLUKA
+7. Compile FLUKA
 8. Clean up Ubuntu installation
 
 ### 6. Close Ubuntu
