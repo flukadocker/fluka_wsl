@@ -175,6 +175,9 @@ if [ ! -e ~/.fluka/fluka.version ]; then
     # Compile FLUKA
     echo "### - Compiling FLUKA"
     sudo -E make
+    
+    # Fix file ownerships
+    sudo chown -R root.root *
 
     # Fix file permissions
     sudo chmod -R a+rX *
