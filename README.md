@@ -35,7 +35,7 @@ To restart the initialization, *Ubuntu* has to be reset. To do so search for *Ub
 ### 4. Downloading the installation scripts
 After setting up the Linux username and password, a Linux prompt appears, and you can run the following command:
 
-    git clone https://github.com/horvathd/fluka_wsl.git
+    git clone https://github.com/flukadocker/fluka_wsl.git
 
 This will download the installation scripts from Github.
 
