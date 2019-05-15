@@ -21,27 +21,20 @@ if [ ! -e ~/.fluka/install.lock ]; then
 
     # Install necessary packages for FLUKA
     echo "### - Installing necessary packages"
-    sudo apt-get install -y make gfortran-8 python tk gnuplot-x11 python-tk \
+    sudo apt-get install -y make gawk python tk gnuplot-x11 python-tk \
                             python-numpy python-scipy desktop-file-utils \
                             python-imaging-tk python-pil python-dicom
-
-    # Set up symbolic links
-    echo "### - Setting up symbolic links"
-    sudo ln -sf /bin/bash /bin/sh
-    sudo ln -sf /usr/bin/gcc-8 /usr/bin/gcc
-    sudo ln -sf /usr/bin/gfortran-8 /usr/bin/gfortran
 
     # Create FLUKA directory
     echo "### - Creating FLUKA directory"
     sudo mkdir -p /usr/local/fluka
-    mkdir -p ~/.local/share
 
-    # Set up enviroment variables
-    echo "### - Setting up enviromental variables"
-    echo 'export FLUPRO=/usr/local/fluka' >> ~/.bashrc
-    echo 'export FLUFOR=gfortran' >> ~/.bashrc
-    echo 'export GFORFLU=gfortran-8' >> ~/.bashrc
-    echo 'export DISPLAY=:0' >> ~/.bashrc
+    # Set up environment variable storage
+    echo "### - Setting up environment variable storage"
+    touch ~/.fluka/envvars
+    echo '' >> ~/.bashrc
+    echo '# Load FLUKA related variables' >> ~/.bashrc
+    echo 'source ~/.fluka/envvars' >> ~/.bashrc
 
     # Flag finished initial setup
     touch ~/.fluka/install.lock
@@ -50,6 +43,24 @@ if [ ! -e ~/.fluka/install.lock ]; then
 else
     echo "### - Initial setup already done"
 fi
+
+# Install gfortran
+echo "### - Installing gfortran"
+sudo apt-get install -y gfortran-8
+
+# Set up symbolic links
+echo "### - Setting up symbolic links"
+sudo ln -sf /bin/bash /bin/sh
+sudo ln -sf /usr/bin/gcc-8 /usr/bin/gcc
+sudo ln -sf /usr/bin/gfortran-8 /usr/bin/gfortran
+
+# Set up environment variables
+echo "### - Setting up environment variables"
+
+echo 'export FLUPRO=/usr/local/fluka' > ~/.fluka/envvars
+echo 'export FLUFOR=gfortran' >> ~/.fluka/envvars
+echo 'export GFORFLU=gfortran-8' >> ~/.fluka/envvars
+echo 'export DISPLAY=:0' >> ~/.fluka/envvars
 
 # Reload bashrc
 echo "### - Reloading enviromental variables"
