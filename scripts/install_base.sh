@@ -32,7 +32,6 @@ if [ ! -e ~/.fluka/install.lock ]; then
     # Set up environment variable storage
     echo "### - Setting up environment variable storage"
     touch ~/.fluka/envvars
-    echo '' >> ~/.bashrc
     echo '# Load FLUKA related variables' >> ~/.bashrc
     echo 'source ~/.fluka/envvars' >> ~/.bashrc
 
