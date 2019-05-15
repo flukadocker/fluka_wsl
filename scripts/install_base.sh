@@ -59,7 +59,6 @@ echo "### - Setting up environment variables"
 
 echo 'export FLUPRO=/usr/local/fluka' > ~/.fluka/envvars
 echo 'export FLUFOR=gfortran' >> ~/.fluka/envvars
-echo 'export GFORFLU=gfortran-8' >> ~/.fluka/envvars
 echo 'export DISPLAY=:0' >> ~/.fluka/envvars
 
 # Reload bashrc
