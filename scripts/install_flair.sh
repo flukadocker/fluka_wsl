@@ -23,8 +23,6 @@ else
     flair_current=0
 fi
 
-# flair_installed=$(dnf list installed flair | grep flair | awk '{print $2}')
-
 # Check if Flair is installed
 echo "### - Looking for previous Flair installation"
 if [ -e ~/.fluka/flair.version ]; then
