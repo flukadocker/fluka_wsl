@@ -102,7 +102,7 @@ To keep your *Ubuntu* up to date regurarly run the following commands:
 ### 2. FLUKA and Flair
 When a new version of FLUKA or Flair is released simply rerun the installation script. It will take care of updating FLUKA and Flair. After the update *Ubuntu* needs to be restarted, to finalize the changes.
 
-### 3. Solving problems after update
-If there is a problem during or after an update, you can try to delete the `~/.fluka/` folder, the dowloaded FLUKA and Flair packages. After this, rerun the installation script. If the problem still presists, please report it on the FLUKA mailing list.
+## Solving problems after update
+If there is a problem during installation or after an update, you can try to delete the `~/.fluka/` folder and the dowloaded FLUKA / Flair packages. After this, rerun the installation script. If the problem still presists, please report it on the FLUKA mailing list.
 
 As final solution you can completely reset *Ubuntu*. For the necessary steps see *Installation / 3.1*.
