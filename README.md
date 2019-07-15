@@ -105,4 +105,4 @@ When a new version of FLUKA or Flair is released simply rerun the installation s
 ## 5. Errors during installation or update
 If there is a problem during installation or an update, you can try to delete the `~/.fluka/` folder and the downloaded FLUKA / Flair packages in the `~/fluka_wsl/` folder. After this, rerun the installation script. If the problem still presists, please report it on the FLUKA mailing list attaching the `~/fluka_wsl/install.log` file.
 
-As final solution you can completely reset *Ubuntu*. For the necessary steps see *Installation / 2.3.1*.
+As final solution you can completely reset *Ubuntu*. For the necessary steps see *Section 2.3.1*.
