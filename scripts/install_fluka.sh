@@ -93,8 +93,8 @@ if [ ! -e ~/.fluka/fluka.version ]; then
         fluka_current_short=$(echo  $fluka_current | awk -F"." '{print $1 "." $2}')
 
         # Create FLUKA package filename
-        fluka_package_short=fluka$fluka_current_short-linux-gfor64bit-8.3-AA.tar.gz
-        fluka_package=fluka$fluka_current-linux-gfor64bit-8.3-AA.tar.gz
+        fluka_package_short=fluka$fluka_current_short-linux-gfor64bitAA.tar.gz
+        fluka_package=fluka$fluka_current-linux-gfor64bitAA.tar.gz
     fi
 
     # Check if FLUKA package with short is already downloaded
