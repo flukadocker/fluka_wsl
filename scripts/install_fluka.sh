@@ -200,7 +200,7 @@ if [ ! -e ~/.fluka/fluka.version ]; then
         echo "### - Downloading the data file."
         cd /usr/local/fluka
         fluka_package_data=fluka$fluka_current_short-data.tar.gz
-        wget_return=$(wget --user=$fuid --ask-password  https://www.fluka.org/packages/${fluka_package_data})
+        wget_return=$(sudo wget --user=$fuid --ask-password  https://www.fluka.org/packages/${fluka_package_data})
         echo "### - Extracting data file to proper location."
         sudo tar -xvzf ${fluka_package_data}
         echo "### - Done extracting data file."
