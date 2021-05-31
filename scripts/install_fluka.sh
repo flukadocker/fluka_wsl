@@ -196,6 +196,14 @@ if [ ! -e ~/.fluka/fluka.version ]; then
 
         touch ~/.fluka/fluka.version
         echo ${fluka_actual} > ~/.fluka/fluka.version
+        
+        echo "### - Downloading the data file."
+        cd /usr/local/fluka
+        fluka_package_data=fluka$fluka_current_short-data.tar.gz
+        wget_return=$(wget --user=$fuid --ask-password  https://www.fluka.org/packages/${fluka_package_data})
+        echo "### - Extracting data file to proper location."
+        sudo tar -xvzf ${fluka_package_data}
+        echo "### - Done extracting data file."
     else
         # Exit with error
         echo "### - FLUKA compilation failed"
