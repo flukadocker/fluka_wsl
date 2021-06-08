@@ -204,6 +204,9 @@ if [ ! -e ~/.fluka/fluka.version ]; then
         echo "### - Extracting data file to proper location."
         sudo tar -xvzf ${fluka_package_data}
         echo "### - Done extracting data file."
+        sudo chown -R root.root *
+        sudo chmod -R a+rX *
+        echo "### - Permissions of data-files arranged."
     else
         # Exit with error
         echo "### - FLUKA compilation failed"
