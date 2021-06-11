@@ -56,7 +56,7 @@ else
     # Indicate that FLUKA wasn't installed
     fluka_installed=0
 fi
-
+echo "### - check if fluka is installed"
 # Check if FLUKA is installed
 if [ ! -e ~/.fluka/fluka.version ]; then
     echo "### - FLUKA is not installed"
@@ -91,12 +91,17 @@ if [ ! -e ~/.fluka/fluka.version ]; then
 
         # Create short FLUKA version number (without respin)
         fluka_current_short=$(echo  $fluka_current | awk -F"." '{print $1 "." $2}')
-
+        # check installed gfortran version
+	
+	
         # Create FLUKA package filename
-        fluka_package_short=fluka$fluka_current_short-linux-gfor64bit-8.3-AA.tar.gz
-        fluka_package=fluka$fluka_current-linux-gfor64bit-8.3-AA.tar.gz
+#        fluka_package_short=fluka$fluka_current_short-linux-gfor64bit-8.3-AA.tar.gz
+#       fluka_package=fluka$fluka_current-linux-gfor64bit-8.3-AA.tar.gz
+        fluka_package_short=fluka$fluka_current_short-linux-gfor64bit-9.3-AA.tar.gz
+        fluka_package=fluka$fluka_current-linux-gfor64bit-9.3-AA.tar.gz
+        fluka_data=fluka${fluka_current_short}-data.tar.gz
     fi
-
+    echo "### fluka package: " $fluka_package
     # Check if FLUKA package with short is already downloaded
     if [ -e ${fluka_package_short} ]; then
         echo "### - FLUKA package with short version number found"
@@ -134,7 +139,7 @@ if [ ! -e ~/.fluka/fluka.version ]; then
         read fuid
 
         # Download FLUKA package
-        wget_return=$(wget --user=$fuid --ask-password  https://www.fluka.org/packages/${fluka_package_short})
+        wget_return=$(wget --user=$fuid --ask-password  --cipher=DEFAULT:@SECLEVEL=1 https://www.fluka.org/packages/${fluka_package_short})
 
         # Check return status of last command
         if [ $? -eq 0 ]; then
@@ -164,11 +169,38 @@ if [ ! -e ~/.fluka/fluka.version ]; then
     else
         echo "### - Current FLUKA package found, skipping download"
     fi
+    # Check if current FLUKA data is already downloaded
+    if [ ! -e ${fluka_data} ]; then
+        # Current package was not downloaded yet
+        echo "### - Downloading FLUKA data"
+        # Get FUID from user
+        echo -n "### - Your FLUKA ID (fuid-xxxx): "
+        read fuid
+
+        # Download FLUKA package
+        wget_return=$(wget --user=$fuid --ask-password  --cipher=DEFAULT:@SECLEVEL=1 https://www.fluka.org/packages/${fluka_data})
+
+        # Check return status of last command
+        if [ $? -eq 0 ]; then
+            # Succesful
+            echo "### - FLUKA data successfully downloaded"
+
+        else
+            # Failed
+            echo "### - Download of FLUKA data failed"
+
+            # Exit with error
+             exit 1
+        fi
+    else
+        echo "### - Current FLUKA data found, skipping download"
+    fi
 
     # Extract FLUKA
     echo "### - Extracting FLUKA package"
     sudo rm -rf /usr/local/fluka/*
     sudo tar -zxf ${fluka_package} -C /usr/local/fluka
+    sudo tar -zxf ${fluka_data} -C /usr/local/fluka
 
     cd /usr/local/fluka
 

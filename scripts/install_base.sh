@@ -45,13 +45,14 @@ fi
 
 # Install gfortran
 echo "### - Installing gfortran"
-sudo apt-get install -y gfortran-8
+#sudo apt-get install -y gfortran-8
+sudo apt-get install -y gfortran
 
 # Set up symbolic links
 echo "### - Setting up symbolic links"
 sudo ln -sf /bin/bash /bin/sh
-sudo ln -sf /usr/bin/gcc-8 /usr/bin/gcc
-sudo ln -sf /usr/bin/gfortran-8 /usr/bin/gfortran
+#sudo ln -sf /usr/bin/gcc-8 /usr/bin/gcc
+#sudo ln -sf /usr/bin/gfortran-8 /usr/bin/gfortran
 
 # Set up environment variables
 echo "### - Setting up environment variables"

@@ -51,6 +51,7 @@ Run the installation script:
 At the beginning of the installation you have to provide your Linux password to be able to run *sudo* commands.
 
 If FLUKA needs to be downloaded, you will pe prompted for your FLUKA ID (fuid-xxxx), and password.
+If the FLUKA data file need to be downloaded, you will pe prompted for your FLUKA ID (fuid-xxxx), and password again.
 
 The installation script will automatically do the following steps:
 1. Update itself from Github
