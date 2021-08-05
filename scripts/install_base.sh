@@ -22,9 +22,11 @@ echo "### - Checking initial setup"
     # Install necessary packages for FLUKA
     echo "### - Installing necessary packages"
     sudo apt-get install -y make gawk python tk gnuplot-x11 python-tk \
-                            python-numpy python-scipy desktop-file-utils \
-                            python-imaging-tk python-pil python-dicom
-
+         python-numpy
+    sudo apt-get install -y  desktop-file-utils \
+                            python-imaging-tk python-pil 
+# not-existing
+    # python-scipy python-dicom
     # Create FLUKA directory
     echo "### - Creating FLUKA directory"
     sudo mkdir -p /usr/local/fluka
