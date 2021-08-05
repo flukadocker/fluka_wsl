@@ -24,9 +24,14 @@ echo "### - Checking initial setup"
     sudo apt-get install -y make gawk python tk gnuplot-x11 python-tk \
          python-numpy
     sudo apt-get install -y  desktop-file-utils \
-                            python-imaging-tk python-pil 
+         python-imaging-tk python-pil
 # not-existing
     # python-scipy python-dicom
+    wget http://archive.ubuntu.com/ubuntu/pool/universe/p/python-scipy/python-scipy_0.19.1-2ubuntu1_amd64.deb
+    wget http://archive.ubuntu.com/ubuntu/pool/universe/p/pydicom/python-dicom_0.9.9-3_all.deb
+    sudo apt-get install -y ./python-scipy_0.19.1-2ubuntu1_amd64.deb
+    sudo apt-get install -y ./python-dicom_0.9.9-3_all.deb
+    rm -rf *deb
     # Create FLUKA directory
     echo "### - Creating FLUKA directory"
     sudo mkdir -p /usr/local/fluka
