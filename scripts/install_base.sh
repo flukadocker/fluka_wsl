@@ -15,7 +15,7 @@ fi
 # Check if initial setup was completed
 echo "### - Checking initial setup"
 
-if [ ! -e ~/.fluka/install.lock ]; then
+#if [ ! -e ~/.fluka/install.lock ]; then
     # Run initial setup
     echo "### - Running initial setup"
 
@@ -39,9 +39,9 @@ if [ ! -e ~/.fluka/install.lock ]; then
     touch ~/.fluka/install.lock
 
     echo "### - Initial setup finished"
-else
-    echo "### - Initial setup already done"
-fi
+#else
+#    echo "### - Initial setup already done"
+#fi
 
 # Install gfortran
 echo "### - Installing gfortran"
