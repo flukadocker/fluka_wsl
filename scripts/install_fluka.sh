@@ -139,7 +139,7 @@ if [ ! -e ~/.fluka/fluka.version ]; then
         read fuid
 
         # Download FLUKA package
-        wget_return=$(wget --user=$fuid --ask-password  --cipher=DEFAULT:@SECLEVEL=1 https://www.fluka.org/packages/${fluka_package_short})
+        wget_return=$(wget --user=$fuid --ask-password https://www.fluka.org/packages/${fluka_package_short})
 
         # Check return status of last command
         if [ $? -eq 0 ]; then
@@ -178,7 +178,7 @@ if [ ! -e ~/.fluka/fluka.version ]; then
         read fuid
 
         # Download FLUKA package
-        wget_return=$(wget --user=$fuid --ask-password  --cipher=DEFAULT:@SECLEVEL=1 https://www.fluka.org/packages/${fluka_data})
+        wget_return=$(wget --user=$fuid --ask-password https://www.fluka.org/packages/${fluka_data})
 
         # Check return status of last command
         if [ $? -eq 0 ]; then
