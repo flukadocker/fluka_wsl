@@ -97,8 +97,10 @@ if [ ! -e ~/.fluka/fluka.version ]; then
         # Create FLUKA package filename
 #        fluka_package_short=fluka$fluka_current_short-linux-gfor64bit-8.3-AA.tar.gz
 #       fluka_package=fluka$fluka_current-linux-gfor64bit-8.3-AA.tar.gz
-        fluka_package_short=fluka$fluka_current_short-linux-gfor64bit-9.3-AA.tar.gz
-        fluka_package=fluka$fluka_current-linux-gfor64bit-9.3-AA.tar.gz
+#        fluka_package_short=fluka$fluka_current_short-linux-gfor64bit-9.3-AA.tar.gz
+		fluka_package_short=fluka$fluka_current_short-linux-gfor64bit-9.4-AA.tar.gz
+#        fluka_package=fluka$fluka_current-linux-gfor64bit-9.3-AA.tar.gz
+        fluka_package=fluka$fluka_current-linux-gfor64bit-9.4-AA.tar.gz
         fluka_data=fluka${fluka_current_short}-data.tar.gz
     fi
     echo "### fluka package: " $fluka_package
@@ -139,7 +141,8 @@ if [ ! -e ~/.fluka/fluka.version ]; then
         read fuid
 
         # Download FLUKA package
-        wget_return=$(wget --user=$fuid --ask-password  --cipher=DEFAULT:@SECLEVEL=1 https://www.fluka.org/packages/${fluka_package_short})
+#        wget_return=$(wget --user=$fuid --ask-password  --cipher=DEFAULT:@SECLEVEL=1 https://www.fluka.org/packages/${fluka_package_short})
+		 wget_return=$(wget --user=$fuid --ask-password  https://www.fluka.org/packages/${fluka_package_short})
 
         # Check return status of last command
         if [ $? -eq 0 ]; then
@@ -178,7 +181,8 @@ if [ ! -e ~/.fluka/fluka.version ]; then
         read fuid
 
         # Download FLUKA package
-        wget_return=$(wget --user=$fuid --ask-password  --cipher=DEFAULT:@SECLEVEL=1 https://www.fluka.org/packages/${fluka_data})
+		#        wget_return=$(wget --user=$fuid --ask-password  --cipher=DEFAULT:@SECLEVEL=1 https://www.fluka.org/packages/${fluka_data})
+		        wget_return=$(wget --user=$fuid --ask-password   https://www.fluka.org/packages/${fluka_data})
 
         # Check return status of last command
         if [ $? -eq 0 ]; then
