@@ -21,16 +21,16 @@ echo "### - Checking initial setup"
 
     # Install necessary packages for FLUKA
     echo "### - Installing necessary packages"
-    sudo apt-get install -y make gawk python3 python3-tk tk gnuplot-x11 \
-         python3-pydicom python3-pil.imagetk
+    sudo apt-get install -y make gawk python tk gnuplot-x11 python-tk \
+         python-numpy
     sudo apt-get install -y  desktop-file-utils \
-         python3-pip python3-scipy python3-numpy 
+         python-imaging-tk python-pil
 # not-existing
     # python-scipy python-dicom
-#    wget http://archive.ubuntu.com/ubuntu/pool/universe/p/python-scipy/python-scipy_0.19.1-2ubuntu1_amd64.deb
-#    wget http://archive.ubuntu.com/ubuntu/pool/universe/p/pydicom/python-dicom_0.9.9-3_all.deb
-#    sudo apt-get install -y ./python-scipy_0.19.1-2ubuntu1_amd64.deb
-#    sudo apt-get install -y ./python-dicom_0.9.9-3_all.deb
+    wget http://archive.ubuntu.com/ubuntu/pool/universe/p/python-scipy/python-scipy_0.19.1-2ubuntu1_amd64.deb
+    wget http://archive.ubuntu.com/ubuntu/pool/universe/p/pydicom/python-dicom_0.9.9-3_all.deb
+    sudo apt-get install -y ./python-scipy_0.19.1-2ubuntu1_amd64.deb
+    sudo apt-get install -y ./python-dicom_0.9.9-3_all.deb
     rm -rf *deb
     # Create FLUKA directory
     echo "### - Creating FLUKA directory"
@@ -74,11 +74,11 @@ source ~/.bashrc
 
 # Install Flair
 echo "### - Running Flair installation"
-./scripts/install_flair.sh
+./scripts/install_flair_wls1.sh
 
 # Install FLUKA
 echo "### - Running FLUKA installation"
-./scripts/install_fluka.sh
+./scripts/install_fluka_wls1.sh
 
 echo "### - Cleaning up Ubuntu"
 sudo apt-get autoremove -y

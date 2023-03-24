@@ -76,8 +76,8 @@ if [ ! -e ~/.fluka/flair.version ]; then
         echo "### - Current Flair version is available"
 
         # Create Flair package filenames
-        flair_package=flair_${flair_current}_all.deb
-        flair_geoviewer_package=flair-geoviewer_${flair_current}_amd64.deb
+        flair_package=flair_${flair_current}py3_all.deb
+        flair_geoviewer_package=flair-geoviewer_${flair_current}py3_amd64.deb
     fi
 
     # Check if current Flair package is already downloaded
