@@ -24,7 +24,7 @@ echo "### - Checking initial setup"
     sudo apt-get install -y make gawk python3 python3-tk tk gnuplot-x11 \
          python3-pydicom python3-pil.imagetk
     sudo apt-get install -y  desktop-file-utils \
-         python3-pip python3-scipy python3-numpy 
+         python3-pip python3-scipy python3-numpy python3-matplotlib
 # not-existing
     # python-scipy python-dicom
 #    wget http://archive.ubuntu.com/ubuntu/pool/universe/p/python-scipy/python-scipy_0.19.1-2ubuntu1_amd64.deb
