@@ -68,6 +68,10 @@ For Windows 11 /WSL2
 
     ./install.sh
 
+For Windows 11 /WSL2 Trial version of fluka
+
+    ./install_trial.sh
+
 For Windows 10 /WSL1
 
     ./install_wls1.sh
