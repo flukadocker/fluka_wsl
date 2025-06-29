@@ -16,7 +16,7 @@ git pull --force
 # Execute installer scripts
 echo "### - Starting installation"
 
-exec ./scripts/install_trial.sh "$@" >&1 | tee install.log
+exec ./scripts/install_base_trial.sh "$@" >&1 | tee install.log
 
 # Change back to original directory
 cd -
