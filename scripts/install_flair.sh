@@ -2,7 +2,7 @@
 
 # Get current Flair version from FLUKA website
 echo "### - Getting current Flair version"
-wget_return=$(wget -q http://www.fluka.org/flair/version.tag)
+wget_return=$(wget -q http://www.fluka.eu/flair/version.tag)
 
 # Check return status of last command
 if [ "$?" -eq 0 ]; then
@@ -86,7 +86,7 @@ if [ ! -e ~/.fluka/flair.version ]; then
         echo "### - Downloading Flair package"
 
         # Download Flair package
-        wget_return=$(wget http://www.fluka.org/flair/${flair_package})
+        wget_return=$(wget http://www.fluka.eu/flair/${flair_package})
 
         # Check return status of last command
         if [ $? -eq 0 ]; then
@@ -120,7 +120,7 @@ if [ ! -e ~/.fluka/flair.version ]; then
         echo "### - Downloading Flair-geoviewer package"
 
         # Download Flair-geoviewer package
-        wget_return=$(wget http://www.fluka.org/flair/${flair_geoviewer_package})
+        wget_return=$(wget http://www.fluka.eu/flair/${flair_geoviewer_package})
 
         # Check return status of last command
         if [ $? -eq 0 ]; then
