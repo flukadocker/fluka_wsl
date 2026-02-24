@@ -98,7 +98,7 @@ if [ ! -e ~/.fluka/fluka.version ]; then
 #        fluka_package_short=fluka$fluka_current_short-linux-gfor64bit-8.3-AA.tar.gz
 #       fluka_package=fluka$fluka_current-linux-gfor64bit-8.3-AA.tar.gz
 #        fluka_package_short=fluka$fluka_current_short-linux-gfor64bit-9.3-AA.tar.gz
-		fluka_package_short=fluka$fluka_current_short-wsl.tar.gz
+		fluka_package_short=fluka$fluka_current_short-wsl-trial.tar.gz
 #        fluka_package=fluka$fluka_current-linux-gfor64bit-9.3-AA.tar.gz
         fluka_package=fluka$fluka_current-wsl-trial.tar.gz
         fluka_data=fluka${fluka_current_short}-data.tar.gz
